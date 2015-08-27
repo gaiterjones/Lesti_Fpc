@@ -209,6 +209,7 @@ cms_page_view,
 catalog_product_view,
 catalog_category_view]]></cache_actions>
                 <dynamic_blocks><![CDATA[messages,
+top_cart,
 global_messages,
 global_notices,
 right.reports.product.viewed]]></dynamic_blocks>
@@ -233,6 +234,10 @@ welcome,
 minicart_head,
 right.poll]]></lazy_blocks>
                 <uri_params><![CDATA[id,
+product_primary_colour_filter,
+product_primary_type_filter,
+value,
+cat,
 category,
 page_id,
 p,
