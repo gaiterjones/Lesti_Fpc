@@ -91,6 +91,10 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
         $id = $cacheData->getCacheId();
         $tags = $cacheData->getTags();
         $lifeTime = $cacheData->getLifeTime();
+		
+		//Mage::log('Lesti_Fpc_Model_Fpc::save '. time());
+		// timestamp
+		$_timeStamp="\n".'<!-- +FPC '. date("d-m-Y H:i:s"). ' -->';		
 
         $compressLevel = Mage::getStoreConfig(self::GZCOMPRESS_LEVEL_XML_PATH);
         if ($compressLevel != -2) {
@@ -98,7 +102,7 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
         }
 
         return $this->_frontend->save(
-            $data,
+            $data.$_timeStamp,
             $this->_id($id),
             $this->_tags($tags),
             $lifeTime
@@ -150,7 +154,9 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
      */
     public function isActive()
     {
-        return Mage::app()->useCache('fpc');
+        // no cache for logged in customers
+		if (Mage::getSingleton('customer/session')->isLoggedIn()) { return false; }  
+		return Mage::app()->useCache('fpc');
     }
 
 }

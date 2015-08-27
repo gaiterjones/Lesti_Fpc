@@ -89,7 +89,7 @@ class Lesti_Fpc_Helper_Block extends Lesti_Fpc_Helper_Abstract
      */
     public function getPlaceholderHtml($blockName)
     {
-        return '<!-- fpc ' . sha1($blockName) . ' -->';
+        return '<!--[fpc ' . sha1($blockName) . ']-->';
     }
 
     /**
