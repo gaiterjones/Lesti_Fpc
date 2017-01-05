@@ -7,14 +7,14 @@
  * @link      https://github.com/GordonLesti/Lesti_Fpc
  * @package   Lesti_Fpc
  * @author    Gordon Lesti <info@gordonlesti.com>
- * @copyright Copyright (c) 2013-2014 Gordon Lesti (http://gordonlesti.com)
+ * @copyright Copyright (c) 2013-2016 Gordon Lesti (http://gordonlesti.com)
  * @license   http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
 
 /**
  * Class Lesti_Fpc_Test_Helper_Block
  *
- * @SuppressWarnings(PHPMD.TooManyMethods)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class Lesti_Fpc_Test_Helper_Block extends Lesti_Fpc_Test_TestCase
 {

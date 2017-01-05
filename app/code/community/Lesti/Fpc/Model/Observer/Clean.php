@@ -7,7 +7,7 @@
  * @link      https://github.com/GordonLesti/Lesti_Fpc
  * @package   Lesti_Fpc
  * @author    Gordon Lesti <info@gordonlesti.com>
- * @copyright Copyright (c) 2013-2014 Gordon Lesti (http://gordonlesti.com)
+ * @copyright Copyright (c) 2013-2016 Gordon Lesti (http://gordonlesti.com)
  * @license   http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
 
@@ -21,6 +21,11 @@ class Lesti_Fpc_Model_Observer_Clean
     public function coreCleanCache()
     {
         $this->_getFpc()->getFrontend()->clean(Zend_Cache::CLEANING_MODE_OLD);
+    }
+
+    public function adminhtmlCacheFlushAll()
+    {
+        $this->_getFpc()->clean();
     }
 
     public function controllerActionPredispatchAdminhtmlCacheMassRefresh()
