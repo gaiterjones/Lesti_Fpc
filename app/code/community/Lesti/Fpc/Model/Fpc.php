@@ -69,6 +69,8 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
      * @param int $lifeTime
      * @return bool
      */
+ 
+	 
     public function save($item, $id, $tags=array(), $lifeTime=null)
     {
         if (!in_array(self::CACHE_TAG, $tags)) {
@@ -77,8 +79,13 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
         if (is_null($lifeTime)) {
             $lifeTime = (int) $this->getFrontend()->getOption('lifetime');
         }
+		
+		//Mage::log('Lesti_Fpc_Model_Fpc::save '. time());
+		// timestamp
+		$_timeStamp="\n".'<!-- +FPC '. date("d-m-Y H:i:s"). ' -->';		
+		
         $data = array(
-            $item->getContent(),
+            $item->getContent().$_timeStamp,
             $item->getTime(),
             $item->getContentType(),
         );
@@ -96,13 +103,9 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
         $id = $cacheData->getCacheId();
         $tags = $cacheData->getTags();
         $lifeTime = $cacheData->getLifeTime();
-		
-		//Mage::log('Lesti_Fpc_Model_Fpc::save '. time());
-		// timestamp
-		$_timeStamp="\n".'<!-- +FPC '. date("d-m-Y H:i:s"). ' -->';			
 
         $compressLevel = Mage::getStoreConfig(self::GZCOMPRESS_LEVEL_XML_PATH);
-        $data = serialize($data.$_timeStamp);
+        $data = serialize($data);
         if ($compressLevel != -2) {
             $data = gzcompress($data, $compressLevel);
         }
