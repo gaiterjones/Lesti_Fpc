@@ -102,13 +102,13 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
 		$_timeStamp="\n".'<!-- +FPC '. date("d-m-Y H:i:s"). ' -->';			
 
         $compressLevel = Mage::getStoreConfig(self::GZCOMPRESS_LEVEL_XML_PATH);
-        $data = serialize($data);
+        $data = serialize($data.$_timeStamp);
         if ($compressLevel != -2) {
             $data = gzcompress($data, $compressLevel);
         }
 
         return $this->_frontend->save(
-            $data.$_timeStamp,
+            $data,
             $this->_id($id),
             $this->_tags($tags),
             $lifeTime
