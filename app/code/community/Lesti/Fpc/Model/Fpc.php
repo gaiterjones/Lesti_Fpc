@@ -82,7 +82,8 @@ class Lesti_Fpc_Model_Fpc extends Mage_Core_Model_Cache
 		
 		//Mage::log('Lesti_Fpc_Model_Fpc::save '. time());
 		// timestamp
-		$_timeStamp="\n".'<!-- +FPC '. date("d-m-Y H:i:s"). ' -->';		
+		$_now=new \DateTime();
+		$_timeStamp="\n".'<!-- +FPC'. Mage::getConfig()->getNode()->modules->Lesti_Fpc->version. ' '. $_now->format("d-m-Y H:i:s"). ' -->';
 		
         $data = array(
             $item->getContent().$_timeStamp,
